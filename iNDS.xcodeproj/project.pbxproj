@@ -35,6 +35,9 @@
 		8BEA098C17872CF40060B347 /* sndcoreaudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098717872CF40060B347 /* sndcoreaudio.mm */; };
 		8BEA098D17872CF40060B347 /* throttle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098817872CF40060B347 /* throttle.cpp */; };
 		9C4DD2861891E5390075B66C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4DD2851891E5390075B66C /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A9165CBF20084BCE0049A4CA /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; };
+		A9165CC020084C750049A4CA /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; };
+		A9165CC120084C750049A4CA /* UnrarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE2F3B6018EF7F5A007A4BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE2F3B5E18EF7F5A007A4BA0 /* Localizable.strings */; };
 		BF2AC478177FF0B700D3CF93 /* ArmLJit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2AC475177FF06600D3CF93 /* ArmLJit.cpp */; };
 		BF9D514317865CD800B5864B /* SndOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9D514117865CD800B5864B /* SndOut.cpp */; };
@@ -256,8 +259,6 @@
 		CAE673901CC824F900E46EDF /* WCEasySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE673881CC824F900E46EDF /* WCEasySettingsViewController.m */; };
 		CAE673911CC824F900E46EDF /* WCEasySettingsOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6738A1CC824F900E46EDF /* WCEasySettingsOption.m */; };
 		CAE6739A1CC8257C00E46EDF /* WCEasySettingsOptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE673991CC8257C00E46EDF /* WCEasySettingsOptionViewController.m */; };
-		CAE8C0C41CEA65AB00082785 /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2C42C1CB21D8E00ED22BB /* UnrarKit.framework */; };
-		CAE8C0C51CEA65AB00082785 /* UnrarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAB2C42C1CB21D8E00ED22BB /* UnrarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D31CC8A417927BCB0098FB9C /* CHBgDropboxSync.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CC8A117927BCB0098FB9C /* CHBgDropboxSync.m */; };
 		D31CC8A517927BCB0098FB9C /* DropboxClearer.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CC8A317927BCB0098FB9C /* DropboxClearer.m */; };
 		D31CC8B217927C3B0098FB9C /* ConciseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CC8AB17927C3B0098FB9C /* ConciseKit.m */; };
@@ -283,7 +284,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CAE8C0C51CEA65AB00082785 /* UnrarKit.framework in Embed Frameworks */,
+				A9165CC120084C750049A4CA /* UnrarKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +337,7 @@
 		9C2ADAAE190717F500BECACF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C4DD2851891E5390075B66C /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		9CD33115196393E000CCBDEF /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A9165CBE20084BCE0049A4CA /* UnrarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnrarKit.framework; path = iNDS/frameworks/UnrarKit.framework; sourceTree = "<group>"; };
 		AE20890E1916401400E2CB33 /* asm-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "asm-32.h"; path = "desmume/src/utils/lightning/i386/asm-32.h"; sourceTree = SOURCE_ROOT; };
 		AE20890F1916401400E2CB33 /* asm-64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "asm-64.h"; path = "desmume/src/utils/lightning/i386/asm-64.h"; sourceTree = SOURCE_ROOT; };
 		AE2089101916401400E2CB33 /* asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asm.h; path = desmume/src/utils/lightning/i386/asm.h; sourceTree = SOURCE_ROOT; };
@@ -683,7 +685,6 @@
 		CAB2C4251CB2039B00ED22BB /* iNDSEmulatorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iNDSEmulatorViewController.mm; sourceTree = "<group>"; };
 		CAB2C4291CB2041900ED22BB /* iNDS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iNDS-Info.plist"; sourceTree = "<group>"; };
 		CAB2C42B1CB21C2000ED22BB /* cheats.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = cheats.7z; path = Resources/cheats/cheats.7z; sourceTree = "<group>"; };
-		CAB2C42C1CB21D8E00ED22BB /* UnrarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnrarKit.framework; sourceTree = "<group>"; };
 		CAB2C42F1CB222AF00ED22BB /* cheats.rar */ = {isa = PBXFileReference; lastKnownFileType = file; name = cheats.rar; path = Resources/cheats/cheats.rar; sourceTree = "<group>"; };
 		CAB2C4361CB2D86C00ED22BB /* iNDSGameTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iNDSGameTableView.h; sourceTree = "<group>"; };
 		CAB2C4371CB2D86C00ED22BB /* iNDSGameTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iNDSGameTableView.m; sourceTree = "<group>"; };
@@ -814,18 +815,19 @@
 				CA908C0D1C235A9B00B2A864 /* AVFoundation.framework in Frameworks */,
 				9C4DD2861891E5390075B66C /* GameController.framework in Frameworks */,
 				D32C39DB178E749C00E6809E /* libc++.dylib in Frameworks */,
+				A9165CBF20084BCE0049A4CA /* UnrarKit.framework in Frameworks */,
 				D32C39D9178E748000E6809E /* QuartzCore.framework in Frameworks */,
 				D32C39D7178E73C200E6809E /* SystemConfiguration.framework in Frameworks */,
 				D32C39D3178E73A600E6809E /* CFNetwork.framework in Frameworks */,
 				4C3F2AED178E017600AE10B8 /* Twitter.framework in Frameworks */,
 				BFAE6F9B17674D93000911CF /* libz.dylib in Frameworks */,
 				BFAE6F931767490A000911CF /* OpenGLES.framework in Frameworks */,
+				A9165CC020084C750049A4CA /* UnrarKit.framework in Frameworks */,
 				BFAE6F9117674902000911CF /* GLKit.framework in Frameworks */,
 				BFCFE0F31764FBD3000A70CF /* UIKit.framework in Frameworks */,
 				BFCFE0F51764FBD3000A70CF /* Foundation.framework in Frameworks */,
 				BFCFE0F71764FBD3000A70CF /* CoreGraphics.framework in Frameworks */,
 				D3B8BB921794ACCE0061D1D8 /* DropboxSDK.framework in Frameworks */,
-				CAE8C0C41CEA65AB00082785 /* UnrarKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +895,14 @@
 				CAA59B091CAC6C850084AB5D /* Bug Reporting */,
 			);
 			name = "App Init";
+			sourceTree = "<group>";
+		};
+		A9165CBD20084AE30049A4CA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				8B28306A178DDC7F00E92785 /* iNDSDonationViewController.m */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		AE20890D19163FF700E2CB33 /* i386 */ = {
@@ -1027,6 +1037,7 @@
 				BFCFE0F11764FBD3000A70CF /* Frameworks */,
 				BFCFE0F01764FBD3000A70CF /* Products */,
 				CA32245E1CCD4C2400C5BEA7 /* OptimizationProfiles */,
+				A9165CBD20084AE30049A4CA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1041,6 +1052,7 @@
 		BFCFE0F11764FBD3000A70CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9165CBE20084BCE0049A4CA /* UnrarKit.framework */,
 				CA6E609B1CB0574B000B269D /* MobileCoreServices.framework */,
 				CA8EA1411C37C42E0082A3F8 /* MediaPlayer.framework */,
 				CABE38971C30FA9800BE8857 /* libsqlite3.tbd */,
@@ -1057,7 +1069,6 @@
 				4C3F2AEC178E017600AE10B8 /* Twitter.framework */,
 				BF9D514717865D5100B5864B /* AudioToolbox.framework */,
 				BFAE6F9A17674D93000911CF /* libz.dylib */,
-				CAB2C42C1CB21D8E00ED22BB /* UnrarKit.framework */,
 				BFAE6F921767490A000911CF /* OpenGLES.framework */,
 				BFAE6F9017674902000911CF /* GLKit.framework */,
 				BFCFE0F21764FBD3000A70CF /* UIKit.framework */,
