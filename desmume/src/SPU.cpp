@@ -62,7 +62,7 @@ int SPU_currentCoreNum = SNDCORE_DUMMY;
 static int volume = 100;
 
 
-static size_t buffersize = 0;
+static u32 buffersize = 0;
 static ESynchMode synchmode = ESynchMode_DualSynchAsynch;
 static ESynchMethod synchmethod = ESynchMethod_N;
 
@@ -126,7 +126,7 @@ static FORCEINLINE T MinMax(T val, T min, T max)
 
 //--------------external spu interface---------------
 
-int SPU_ChangeSoundCore(int coreid, int buffersize)
+int SPU_ChangeSoundCore(int coreid, u32 buffersize)
 {
 	int i;
 
@@ -189,10 +189,10 @@ void SPU_ReInit()
 	SPU_Init(SNDCoreId, buffersize);
 }
 
-int SPU_Init(int coreid, int buffersize)
+int SPU_Init(int coreid, u32 buffersize)
 {
 	int i, j;
-	
+
 	// Build the cosine interpolation LUT
 	for(unsigned int i = 0; i < COSINE_INTERPOLATION_RESOLUTION; i++)
 		cos_lut[i] = (1.0 - cos(((double)i/(double)COSINE_INTERPOLATION_RESOLUTION) * M_PI)) * 0.5;
@@ -253,7 +253,7 @@ void SPU_SetSynchMode(int mode, int method)
 
 	delete SPU_user;
 	SPU_user = NULL;
-		
+
 	if(synchmode == ESynchMode_DualSynchAsynch)
 	{
 		SPU_user = new SPU_struct(buffersize);
@@ -392,7 +392,7 @@ void SPU_struct::KeyOn(int channel)
 
 
 	//LOG("Channel %d key on: vol = %d, datashift = %d, hold = %d, pan = %d, waveduty = %d, repeat = %d, format = %d, source address = %07X,"
-	//		"timer = %04X, loop start = %04X, length = %06X, MMU.ARM7_REG[0x501] = %02X\n", channel, chan->vol, chan->datashift, chan->hold, 
+	//		"timer = %04X, loop start = %04X, length = %06X, MMU.ARM7_REG[0x501] = %02X\n", channel, chan->vol, chan->datashift, chan->hold,
 	//		chan->pan, chan->waveduty, chan->repeat, chan->format, chan->addr, chan->timer, chan->loopstart, chan->length, T1ReadByte(MMU.ARM7_REG, 0x501));
 
 	switch(thischan.format)
@@ -446,7 +446,7 @@ void SPU_struct::KeyOn(int channel)
 #define GETBYTE(which,val) ((val>>(which*8))&0xFF)
 
 
-u8 SPU_ReadByte(u32 addr) { 
+u8 SPU_ReadByte(u32 addr) {
 	addr &= 0xFFF;
 	return SPU_core->ReadByte(addr);
 }
@@ -475,7 +475,7 @@ u8 SPU_struct::ReadByte(u32 addr)
 	{
 	//SOUNDCNT
 	case 0x500: return regs.mastervol;
-	case 0x501: 
+	case 0x501:
 		return (regs.ctl_left)|(regs.ctl_right<<2)|(regs.ctl_ch1bypass<<4)|(regs.ctl_ch3bypass<<5)|(regs.masteren<<7);
 	case 0x502: return 0;
 	case 0x503: return 0;
@@ -485,7 +485,7 @@ u8 SPU_struct::ReadByte(u32 addr)
 	case 0x505: return (regs.soundbias>>8)&0xFF;
 	case 0x506: return 0;
 	case 0x507: return 0;
-	
+
 	//SNDCAP0CNT/SNDCAP1CNT
 	case 0x508:
 	case 0x509: {
@@ -496,7 +496,7 @@ u8 SPU_struct::ReadByte(u32 addr)
 			| (regs.cap[which].bits8<<3)
 			//| (regs.cap[which].active<<7); //? which is right? need test
 			| (regs.cap[which].runtime.running<<7);
-	}	
+	}
 
 	//SNDCAP0DAD
 	case 0x510: return GETBYTE(0,regs.cap[0].dad);
@@ -693,10 +693,10 @@ void SPU_struct::WriteByte(u32 addr, u8 val)
 	case 0x51F: break; //not used
 
 
-	
+
 	default: {
 		//individual channel regs
-		
+
 		u32 chan_num = (addr >> 4) & 0xF;
 		if(chan_num>0xF) break;
 		channel_struct &thischan=channels[chan_num];
@@ -725,12 +725,12 @@ void SPU_struct::WriteByte(u32 addr, u8 val)
 			case 0x5: SETBYTE(1,thischan.addr,val); break;
 			case 0x6: SETBYTE(2,thischan.addr,val); break;
 			case 0x7: SETBYTE(3,thischan.addr,val&0x7); break; //only 27 bits of this register are used
-			case 0x8: 
-				SETBYTE(0,thischan.timer,val); 
+			case 0x8:
+				SETBYTE(0,thischan.timer,val);
 				adjust_channel_timer(&thischan);
 				break;
-			case 0x9: 
-				SETBYTE(1,thischan.timer,val); 
+			case 0x9:
+				SETBYTE(1,thischan.timer,val);
 				adjust_channel_timer(&thischan);
 				break;
 			case 0xA: SETBYTE(0,thischan.loopstart,val); break;
@@ -786,7 +786,7 @@ void SPU_WriteLong(u32 addr, u32 val)
 	addr &= 0xFFF;
 
 	SPU_core->WriteLong(addr,val);
-	if(SPU_user) 
+	if(SPU_user)
 		SPU_user->WriteLong(addr,val);
 }
 
@@ -797,7 +797,7 @@ template<SPUInterpolationMode INTERPOLATE_MODE> static FORCEINLINE s32 Interpola
 	double sampleA = (double)a;
 	double sampleB = (double)b;
 	ratio = ratio - sputrunc(ratio);
-	
+
 	switch (INTERPOLATE_MODE)
 	{
 		case SPUInterpolation_Cosine:
@@ -806,17 +806,17 @@ template<SPUInterpolationMode INTERPOLATE_MODE> static FORCEINLINE s32 Interpola
 			// sampleI = sampleA * (1 - ratio2) + sampleB * ratio2
 			return s32floor((cos_lut[(unsigned int)(ratio * (double)COSINE_INTERPOLATION_RESOLUTION)] * (sampleB - sampleA)) + sampleA);
 			break;
-			
+
 		case SPUInterpolation_Linear:
 			// Linear Interpolation Formula:
 			// sampleI = sampleA * (1 - ratio) + sampleB * ratio
 			return s32floor((ratio * (sampleB - sampleA)) + sampleA);
 			break;
-			
+
 		default:
 			break;
 	}
-	
+
 	return a;
 }
 
@@ -855,7 +855,7 @@ template<SPUInterpolationMode INTERPOLATE_MODE> static FORCEINLINE void Fetch16B
 	if(INTERPOLATE_MODE != SPUInterpolation_None)
 	{
 		u32 loc = sputrunc(chan->sampcnt);
-		
+
 		s32 a = (s32)read16(loc*2 + chan->addr), b;
 		if(loc < (chan->totlength << 1) - 1)
 		{
@@ -1044,7 +1044,7 @@ template<int CHANNELS> FORCEINLINE static void SPU_Mix(SPU_struct* SPU, channel_
 }
 
 //WORK
-template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE, int CHANNELS> 
+template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE, int CHANNELS>
 	FORCEINLINE static void ____SPU_ChanUpdate(SPU_struct* const SPU, channel_struct* const chan)
 {
 	for (; SPU->bufpos < SPU->buflength; SPU->bufpos++)
@@ -1070,7 +1070,7 @@ template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE, int CHANNELS>
 	}
 }
 
-template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE> 
+template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE>
 	FORCEINLINE static void ___SPU_ChanUpdate(const bool actuallyMix, SPU_struct* const SPU, channel_struct* const chan)
 {
 	if(!actuallyMix)
@@ -1083,7 +1083,7 @@ template<int FORMAT, SPUInterpolationMode INTERPOLATE_MODE>
 		____SPU_ChanUpdate<FORMAT,INTERPOLATE_MODE,1>(SPU,chan);
 }
 
-template<SPUInterpolationMode INTERPOLATE_MODE> 
+template<SPUInterpolationMode INTERPOLATE_MODE>
 	FORCEINLINE static void __SPU_ChanUpdate(const bool actuallyMix, SPU_struct* const SPU, channel_struct* const chan)
 {
 	switch(chan->format)
@@ -1117,7 +1117,7 @@ static void SPU_MixAudio_Advanced(bool actuallyMix, SPU_struct *SPU, int length)
 	//THIS IS MAX HACKS!!!!
 	//AND NEEDS TO BE REWRITTEN ALONG WITH THE DEEPEST PARTS OF THE SPU
 	//ONCE WE KNOW THAT IT WORKS
-	
+
 	//BIAS gets ignored since our spu is still not bit perfect,
 	//and it doesnt matter for purposes of capture
 
@@ -1126,7 +1126,7 @@ static void SPU_MixAudio_Advanced(bool actuallyMix, SPU_struct *SPU, int length)
 	//-----------------
 
 	s32 samp0[2];
-	
+
 	//believe it or not, we are going to do this one sample at a time.
 	//like i said, it is slower.
 	for(int samp=0;samp<length;samp++)
@@ -1191,7 +1191,7 @@ static void SPU_MixAudio_Advanced(bool actuallyMix, SPU_struct *SPU, int length)
 					mix[1] += submix[i*2+1];
 				}
 			}
-			else 
+			else
 			{
 				chanout[i] = 0;
 				submix[i*2] = 0;
@@ -1222,13 +1222,13 @@ static void SPU_MixAudio_Advanced(bool actuallyMix, SPU_struct *SPU, int length)
 
 
 		//generate capture output ("capture bugs" from gbatek are not emulated)
-		if(SPU->regs.cap[0].source==0) 
+		if(SPU->regs.cap[0].source==0)
 			capout[0] = capmixout[0]; //cap0 = L-mix
 		else if(SPU->regs.cap[0].add)
 			capout[0] = chanout[0] + chanout[1]; //cap0 = ch0+ch1
 		else capout[0] = chanout[0]; //cap0 = ch0
 
-		if(SPU->regs.cap[1].source==0) 
+		if(SPU->regs.cap[1].source==0)
 			capout[1] = capmixout[1]; //cap1 = R-mix
 		else if(SPU->regs.cap[1].add)
 			capout[1] = chanout[2] + chanout[3]; //cap1 = ch2+ch3
@@ -1287,7 +1287,7 @@ static void SPU_MixAudio_Advanced(bool actuallyMix, SPU_struct *SPU, int length)
 					//static FILE* fp = NULL;
 					//if(!fp) fp = fopen("d:\\capout.raw","wb");
 					//fwrite(&sample,2,1,fp);
-					
+
 					if(cap.bits8)
 					{
 						s8 sample8 = sample>>8;
@@ -1392,11 +1392,11 @@ void SPU_Emulate_core()
 {
 	bool needToMix = true;
 	SoundInterface_struct *soundProcessor = SPU_SoundCore();
-	
+
 	samples += samples_per_hline;
 	spu_core_samples = (int)(samples);
 	samples -= spu_core_samples;
-	
+
 	// We don't need to mix audio for Dual Synch/Asynch mode since we do this
 	// later in SPU_Emulate_user(). Disable mixing here to speed up processing.
 	// However, recording still needs to mix the audio, so make sure we're also
@@ -1406,14 +1406,14 @@ void SPU_Emulate_core()
 	{
 		needToMix = false;
 	}
-	
+
 	SPU_MixAudio(needToMix, SPU_core, spu_core_samples);
-	
+
 	if (soundProcessor == NULL)
 	{
 		return;
 	}
-	
+
 	if (soundProcessor->FetchSamples != NULL)
 	{
 		soundProcessor->FetchSamples(SPU_core->outbuf, spu_core_samples, synchmode, synchronizer);
@@ -1431,12 +1431,12 @@ void SPU_Emulate_user(bool mix)
 	size_t freeSampleCount = 0;
 	size_t processedSampleCount = 0;
 	SoundInterface_struct *soundProcessor = SPU_SoundCore();
-	
+
 	if (soundProcessor == NULL)
 	{
 		return;
 	}
-	
+
 	// Check to see how many free samples are available.
 	// If there are some, fill up the output buffer.
 	freeSampleCount = soundProcessor->GetAudioSpace();
@@ -1444,13 +1444,13 @@ void SPU_Emulate_user(bool mix)
 	{
 		return;
 	}
-	
+
 	//printf("mix %i samples\n", audiosize);
 	if (freeSampleCount > buffersize)
 	{
 		freeSampleCount = buffersize;
 	}
-	
+
 	// If needed, resize the post-process buffer to guarantee that
 	// we can store all the sound data.
 	if (postProcessBufferSize < freeSampleCount * 2 * sizeof(s16))
@@ -1458,7 +1458,7 @@ void SPU_Emulate_user(bool mix)
 		postProcessBufferSize = freeSampleCount * 2 * sizeof(s16);
 		postProcessBuffer = (s16 *)realloc(postProcessBuffer, postProcessBufferSize);
 	}
-	
+
 	if (soundProcessor->PostProcessSamples != NULL)
 	{
 		processedSampleCount = soundProcessor->PostProcessSamples(postProcessBuffer, freeSampleCount, synchmode, synchronizer);
@@ -1467,7 +1467,7 @@ void SPU_Emulate_user(bool mix)
 	{
 		processedSampleCount = SPU_DefaultPostProcessSamples(postProcessBuffer, freeSampleCount, synchmode, synchronizer);
 	}
-	
+
 	soundProcessor->UpdateAudio(postProcessBuffer, processedSampleCount);
 	WAV_WavSoundUpdate(postProcessBuffer, processedSampleCount, WAVMODE_USER);
 }
@@ -1483,7 +1483,7 @@ void SPU_DefaultFetchSamples(s16 *sampleBuffer, size_t sampleCount, ESynchMode s
 size_t SPU_DefaultPostProcessSamples(s16 *postProcessBuffer, size_t requestedSampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer)
 {
 	size_t processedSampleCount = 0;
-	
+
 	switch (synchMode)
 	{
 		case ESynchMode_DualSynchAsynch:
@@ -1494,15 +1494,15 @@ size_t SPU_DefaultPostProcessSamples(s16 *postProcessBuffer, size_t requestedSam
 				processedSampleCount = requestedSampleCount;
 			}
 			break;
-			
+
 		case ESynchMode_Synchronous:
 			processedSampleCount = theSynchronizer->output_samples(postProcessBuffer, requestedSampleCount);
 			break;
-			
+
 		default:
 			break;
 	}
-	
+
 	return processedSampleCount;
 }
 
@@ -1510,16 +1510,16 @@ size_t SPU_DefaultPostProcessSamples(s16 *postProcessBuffer, size_t requestedSam
 // Dummy Sound Interface
 //////////////////////////////////////////////////////////////////////////////
 
-int SNDDummyInit(int buffersize);
-void SNDDummyDeInit();
-void SNDDummyUpdateAudio(s16 *buffer, u32 num_samples);
-u32 SNDDummyGetAudioSpace();
-void SNDDummyMuteAudio();
-void SNDDummyUnMuteAudio();
-void SNDDummySetVolume(int volume);
-void SNDDummyClearBuffer();
-void SNDDummyFetchSamples(s16 *sampleBuffer, size_t sampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer);
-size_t SNDDummyPostProcessSamples(s16 *postProcessBuffer, size_t requestedSampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer);
+int SNDDummyInit(u32 buffersize) { return 0; }
+void SNDDummyDeInit() {}
+void SNDDummyUpdateAudio(s16 *buffer, u32 num_samples) { }
+u32 SNDDummyGetAudioSpace() { return DESMUME_SAMPLE_RATE/60 + 5; }
+void SNDDummyMuteAudio() {}
+void SNDDummyUnMuteAudio() {}
+void SNDDummySetVolume(int volume) {}
+void SNDDummyClearBuffer() {}
+void SNDDummyFetchSamples(s16 *sampleBuffer, size_t sampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer) {}
+size_t SNDDummyPostProcessSamples(s16 *postProcessBuffer, size_t requestedSampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer) { return 0; }
 
 SoundInterface_struct SNDDummy = {
 	SNDCORE_DUMMY,
@@ -1535,17 +1535,6 @@ SoundInterface_struct SNDDummy = {
 	SNDDummyFetchSamples,
 	SNDDummyPostProcessSamples
 };
-
-int SNDDummyInit(int buffersize) { return 0; }
-void SNDDummyDeInit() {}
-void SNDDummyUpdateAudio(s16 *buffer, u32 num_samples) { }
-u32 SNDDummyGetAudioSpace() { return DESMUME_SAMPLE_RATE/60 + 5; }
-void SNDDummyMuteAudio() {}
-void SNDDummyUnMuteAudio() {}
-void SNDDummySetVolume(int volume) {}
-void SNDDummyClearBuffer() {}
-void SNDDummyFetchSamples(s16 *sampleBuffer, size_t sampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer) {}
-size_t SNDDummyPostProcessSamples(s16 *postProcessBuffer, size_t requestedSampleCount, ESynchMode synchMode, ISynchronizingAudioBuffer *theSynchronizer) { return 0; }
 
 //---------wav writer------------
 
@@ -1569,7 +1558,7 @@ typedef struct {
 	u16 bitspersample;
 } fmt_struct;
 
-WavWriter::WavWriter() 
+WavWriter::WavWriter()
 : spufp(NULL)
 {
 }
@@ -1743,8 +1732,8 @@ void spu_savestate(EMUFILE* os)
 
 bool spu_loadstate(EMUFILE* is, int size)
 {
-	u64 temp64; 
-	
+	u64 temp64;
+
 	//read version
 	u32 version;
 	if(read32le(&version,is) != 1) return false;
@@ -1832,7 +1821,7 @@ bool spu_loadstate(EMUFILE* is, int size)
 	else
 		for(int i=0;i<2;i++) spu->regs.cap[i].runtime.fifo.reset();
 
-	//older versions didnt store a mastervol; 
+	//older versions didnt store a mastervol;
 	//we must reload this or else games will start silent
 	if(version<4)
 	{
