@@ -80,7 +80,6 @@ bool frameAdvance = false;
 bool FrameLimit = true;
 int emu_paused = 0;
 volatile bool paused = false;
-bool enableMicrophone = true;
 volatile bool pausedByMinimize = false;
 volatile bool soundEnabled = true;
 
@@ -220,7 +219,6 @@ void EMU_loadSettings()
 	CommonSettings.GFX3D_LineHack = 0;
 	useMmapForRomLoading = true;
 	fw_config.language = 1;
-	enableMicrophone = true;
 }
 
 void iNDS_unpause()

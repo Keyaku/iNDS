@@ -5,9 +5,9 @@ Simulate physical actions (Lid Close)
 Color Change
 Import saves and roms from nds4ios
 Overhaul layout once everything is done
+Microphone
 
 In Progress:
-Microphone
 JIT
 Arm 64 JIT
 

@@ -25,7 +25,6 @@
 #import <GameController/GameController.h>
 
 #include "emu.h"
-//#include "mic.h"
 #import "SCLAlertView.h"
 
 #import "iNDSMFIControllerSupport.h"

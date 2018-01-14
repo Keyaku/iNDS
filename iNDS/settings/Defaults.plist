@@ -4,8 +4,6 @@
 <dict>
 	<key>videoFilter</key>
 	<integer>5</integer>
-	<key>enableMic</key>
-	<true/>
 	<key>volumeBumper</key>
 	<false/>
 	<key>fullScreenSettings</key>

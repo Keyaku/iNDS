@@ -455,9 +455,8 @@
                                [[WCEasySettingsSwitch alloc] initWithIdentifier:@"ignoreMute"
                                                                           title:@"Ignore Mute Button"],
                                [[WCEasySettingsSwitch alloc] initWithIdentifier:@"synchSound"
-                                                                          title:@"Synchronous Audio"],
-                               [[WCEasySettingsSwitch alloc] initWithIdentifier:@"enableMic"
-                                                                          title:@"Enable Mic"]];
+																		  title:@"Synchronous Audio"]
+							   ];
         
         
         //Dropbox

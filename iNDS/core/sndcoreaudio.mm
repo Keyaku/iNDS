@@ -63,7 +63,7 @@ int SNDCoreAudioInit(int buffersize) {
     AudioStreamBasicDescription outputFormat;
     outputFormat.mSampleRate = 44100;
     outputFormat.mFormatID = kAudioFormatLinearPCM;
-    outputFormat.mFormatFlags = kAudioFormatFlagsCanonical;
+    outputFormat.mFormatFlags = kAudioFormatFlagIsPacked;
     outputFormat.mBytesPerPacket = 4;
     outputFormat.mFramesPerPacket = 1;
     outputFormat.mBytesPerFrame = 4;

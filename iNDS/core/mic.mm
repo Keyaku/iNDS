@@ -7,15 +7,11 @@
 //
 
 #include "mic.h"
-#import "iNDSMicrophone.h"
-#import "TPCircularBuffer.h"
 #import <AVFoundation/AVFAudio.h>
 
 // For easy timing functions... remove later
 #import <UIKit/UIKit.h>
 
-iNDSMicrophone *microphone;
-TPCircularBuffer *buf;
 bool micEnabled;
 volatile float micSampleRate = 0.0;
 
@@ -23,23 +19,17 @@ volatile float micSampleRate = 0.0;
 
 void Mic_DeInit(){
     printf("Mic_DeInit\n");
+	// TODO: de-initialize microphone structure
 }
 BOOL Mic_Init(){
     printf("Mic Init\n");
-    if (!microphone && [[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission)]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            microphone = [[iNDSMicrophone alloc] init];
-            micEnabled = microphone.micEnabled;
-            buf = microphone.buffer;
-            [microphone start];
-        });
-    }
+	// TODO: initialize microphone structure
     return true;
 }
 
 void Mic_Reset(){
     printf("Mic_Reset\n");
-    micEnabled = microphone.micEnabled;
+	// TODO: re-enable microphone
 }
 
 // For debugging
@@ -56,6 +46,7 @@ static inline void calcSampleRate() {
 
 // the closer the sample rate is to 16000, the better the microphone will work
 u8 Mic_ReadSample(){
+#if 0
     if (!microphone || !micEnabled)
         return 128;
 
@@ -72,24 +63,18 @@ u8 Mic_ReadSample(){
         //printf("Sample: %d -> %d\n", (stream[index] - 128), sample/5);
         return sample / 5 + 128;
         
-    } else {
-//#ifdef DEBUG
-//        printf("No bytes to be read: %d (%p)\n", availableBytes, buf);
-//#endif
-        micEnabled = microphone.micEnabled;
-        [microphone start];
-        buf = microphone.buffer;
-        return 128;
     }
+#endif
+	return 128;
 }
 
 void mic_savestate(EMUFILE* os){
-    printf("mic_savestate\n");
+    //printf("mic_savestate\n");
 }
 
 bool mic_loadstate(EMUFILE* is, int size){
-    printf("mic_loadstate\n");
-    micEnabled = microphone.micEnabled;
+    //printf("mic_loadstate\n");
+    // TODO: re-enable microphone
     return true;
 }
 
