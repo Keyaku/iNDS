@@ -984,6 +984,7 @@
 				A9165CBD20084AE30049A4CA /* Recovered References */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		BFCFE0F01764FBD3000A70CF /* Products */ = {
 			isa = PBXGroup;
