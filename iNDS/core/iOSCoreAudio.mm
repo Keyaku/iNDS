@@ -1,5 +1,5 @@
 //
-//  sndcoreaudio.mm
+//  iOSCoreAudio.mm
 //  iNDS
 //
 //  Created by Zydeco on 3/7/2013.
@@ -8,7 +8,7 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #include "SPU.h"
-#include "sndcoreaudio.h"
+#include "iOSCoreAudio.h"
 #include "main.h"
 
 #define NUM_BUFFERS 2
@@ -42,17 +42,6 @@ int SNDCoreAudioInit(u32 buffersize) {
     // create queue
     AudioStreamBasicDescription outputFormat;
 	memset(&outputFormat, 0, sizeof(outputFormat));
-	/*
-    outputFormat.mSampleRate = 44100;
-    outputFormat.mFormatID = kAudioFormatLinearPCM;
-    outputFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-    outputFormat.mBytesPerPacket = 4;
-    outputFormat.mFramesPerPacket = 1;
-    outputFormat.mBytesPerFrame = 4;
-    outputFormat.mChannelsPerFrame = 2;
-    outputFormat.mBitsPerChannel = 16;
-    outputFormat.mReserved = 0;
-	*/
 	outputFormat.mSampleRate = DESMUME_SAMPLE_RATE;
 	outputFormat.mFormatID = kAudioFormatLinearPCM;
 	outputFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;

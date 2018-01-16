@@ -19,7 +19,7 @@
 #include "saves.h"
 #include "video.h"
 #include "throttle.h"
-#include "sndcoreaudio.h"
+#include "iOSCoreAudio.h"
 #include "cheatSystem.h"
 #include "slot1.h"
 #include "version.h"

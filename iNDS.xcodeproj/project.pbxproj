@@ -32,7 +32,7 @@
 		8BEA097A17872C4B0060B347 /* UIScreen+Widescreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA097917872C4B0060B347 /* UIScreen+Widescreen.m */; };
 		8BEA097E17872C5E0060B347 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA097B17872C5E0060B347 /* main.m */; };
 		8BEA098A17872CF40060B347 /* emu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098117872CF40060B347 /* emu.cpp */; };
-		8BEA098C17872CF40060B347 /* sndcoreaudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098717872CF40060B347 /* sndcoreaudio.mm */; };
+		8BEA098C17872CF40060B347 /* iOSCoreAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098717872CF40060B347 /* iOSCoreAudio.mm */; };
 		8BEA098D17872CF40060B347 /* throttle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA098817872CF40060B347 /* throttle.cpp */; };
 		9C4DD2861891E5390075B66C /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4DD2851891E5390075B66C /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A9165CBF20084BCE0049A4CA /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; };
@@ -312,8 +312,8 @@
 		8BEA098117872CF40060B347 /* emu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = emu.cpp; path = iNDS/core/emu.cpp; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		8BEA098217872CF40060B347 /* emu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = emu.h; path = iNDS/core/emu.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8BEA098517872CF40060B347 /* nullJit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = nullJit.h; path = iNDS/core/nullJit.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		8BEA098617872CF40060B347 /* sndcoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = sndcoreaudio.h; path = iNDS/core/sndcoreaudio.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		8BEA098717872CF40060B347 /* sndcoreaudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; name = sndcoreaudio.mm; path = iNDS/core/sndcoreaudio.mm; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BEA098617872CF40060B347 /* iOSCoreAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = iOSCoreAudio.h; path = iNDS/core/iOSCoreAudio.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BEA098717872CF40060B347 /* iOSCoreAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; name = iOSCoreAudio.mm; path = iNDS/core/iOSCoreAudio.mm; sourceTree = SOURCE_ROOT; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8BEA098817872CF40060B347 /* throttle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = throttle.cpp; path = iNDS/core/throttle.cpp; sourceTree = SOURCE_ROOT; };
 		8BEA098917872CF40060B347 /* throttle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = throttle.h; path = iNDS/core/throttle.h; sourceTree = SOURCE_ROOT; };
 		8BEA0991178733DB0060B347 /* iNDS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "iNDS-Prefix.pch"; path = "support/iNDS-Prefix.pch"; sourceTree = "<group>"; };
@@ -809,8 +809,8 @@
 				CAB2C45A1CB4C5B300ED22BB /* mic.h */,
 				CAB2C4591CB4C5B300ED22BB /* mic.mm */,
 				8BEA098517872CF40060B347 /* nullJit.h */,
-				8BEA098617872CF40060B347 /* sndcoreaudio.h */,
-				8BEA098717872CF40060B347 /* sndcoreaudio.mm */,
+				8BEA098617872CF40060B347 /* iOSCoreAudio.h */,
+				8BEA098717872CF40060B347 /* iOSCoreAudio.mm */,
 				8BEA098817872CF40060B347 /* throttle.cpp */,
 				8BEA098917872CF40060B347 /* throttle.h */,
 				28387161179561F5009B8E84 /* iNDSGame.h */,
@@ -1787,7 +1787,7 @@
 				CA68821D1CDC118500B0ED05 /* iNDSBuildStoreTableViewController.m in Sources */,
 				BFCFE18B17650FB0000A70CF /* Disassembler.cpp in Sources */,
 				BFCFE18C17650FB0000A70CF /* driver.cpp in Sources */,
-				8BEA098C17872CF40060B347 /* sndcoreaudio.mm in Sources */,
+				8BEA098C17872CF40060B347 /* iOSCoreAudio.mm in Sources */,
 				BFCFE18D17650FB0000A70CF /* emufile.cpp in Sources */,
 				CA031D261BEBE1EB00EDE98D /* CpuArch.c in Sources */,
 				BFCFE18E17650FB0000A70CF /* FIFO.cpp in Sources */,

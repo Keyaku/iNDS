@@ -1,13 +1,13 @@
 //
-//  sndcoreaudio.h
+//  iOSCoreAudio.h
 //  iNDS
 //
 //  Created by Zydeco on 3/7/2013.
 //  Copyright (c) 2013 Homebrew. All rights reserved.
 //
 
-#ifndef iNDS_sndcoreaudio_h
-#define iNDS_sndcoreaudio_h
+#ifndef iOSCoreAudio_h
+#define iOSCoreAudio_h
 
 #include "SPU.h"
 
