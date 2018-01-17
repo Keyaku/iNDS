@@ -38,6 +38,7 @@
 		A9165CBF20084BCE0049A4CA /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; };
 		A9165CC020084C750049A4CA /* UnrarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; };
 		A9165CC120084C750049A4CA /* UnrarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9165CBE20084BCE0049A4CA /* UnrarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9E80D6F200F0DF100E0E339 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E80D6E200F0DF000E0E339 /* libz.tbd */; };
 		AE2F3B6018EF7F5A007A4BA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE2F3B5E18EF7F5A007A4BA0 /* Localizable.strings */; };
 		BF2AC478177FF0B700D3CF93 /* ArmLJit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2AC475177FF06600D3CF93 /* ArmLJit.cpp */; };
 		BF9D514317865CD800B5864B /* SndOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF9D514117865CD800B5864B /* SndOut.cpp */; };
@@ -51,7 +52,6 @@
 		BF9D516F17867F7D00B5864B /* JoystickButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9D516717867F7D00B5864B /* JoystickButton@2x.png */; };
 		BFAE6F9117674902000911CF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAE6F9017674902000911CF /* GLKit.framework */; };
 		BFAE6F931767490A000911CF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAE6F921767490A000911CF /* OpenGLES.framework */; };
-		BFAE6F9B17674D93000911CF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAE6F9A17674D93000911CF /* libz.dylib */; };
 		BFCFE0F31764FBD3000A70CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCFE0F21764FBD3000A70CF /* UIKit.framework */; };
 		BFCFE0F51764FBD3000A70CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCFE0F41764FBD3000A70CF /* Foundation.framework */; };
 		BFCFE0F71764FBD3000A70CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCFE0F61764FBD3000A70CF /* CoreGraphics.framework */; };
@@ -253,7 +253,6 @@
 		D32C39D3178E73A600E6809E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32C39D2178E73A600E6809E /* CFNetwork.framework */; };
 		D32C39D7178E73C200E6809E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32C39D6178E73C200E6809E /* SystemConfiguration.framework */; };
 		D32C39D9178E748000E6809E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32C39D8178E748000E6809E /* QuartzCore.framework */; };
-		D32C39DB178E749C00E6809E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D32C39DA178E749C00E6809E /* libc++.dylib */; };
 		D3B8BB921794ACCE0061D1D8 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B8BB911794ACCE0061D1D8 /* DropboxSDK.framework */; };
 		D3B8BB961794ACEF0061D1D8 /* ZAActivityBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3B8BB931794ACEF0061D1D8 /* ZAActivityBar.bundle */; };
 		D3B8BB971794ACEF0061D1D8 /* ZAActivityBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B8BB951794ACEF0061D1D8 /* ZAActivityBar.m */; };
@@ -321,6 +320,7 @@
 		9C4DD2851891E5390075B66C /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		9CD33115196393E000CCBDEF /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A9165CBE20084BCE0049A4CA /* UnrarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnrarKit.framework; path = iNDS/frameworks/UnrarKit.framework; sourceTree = "<group>"; };
+		A9E80D6E200F0DF000E0E339 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AE20890E1916401400E2CB33 /* asm-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "asm-32.h"; path = "desmume/src/utils/lightning/i386/asm-32.h"; sourceTree = SOURCE_ROOT; };
 		AE20890F1916401400E2CB33 /* asm-64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "asm-64.h"; path = "desmume/src/utils/lightning/i386/asm-64.h"; sourceTree = SOURCE_ROOT; };
 		AE2089101916401400E2CB33 /* asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asm.h; path = desmume/src/utils/lightning/i386/asm.h; sourceTree = SOURCE_ROOT; };
@@ -366,7 +366,6 @@
 		BF9D516717867F7D00B5864B /* JoystickButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "JoystickButton@2x.png"; path = "Resources/JoystickButton@2x.png"; sourceTree = "<group>"; };
 		BFAE6F9017674902000911CF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		BFAE6F921767490A000911CF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		BFAE6F9A17674D93000911CF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BFCFE0EF1764FBD3000A70CF /* iNDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCFE0F21764FBD3000A70CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFCFE0F41764FBD3000A70CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -604,7 +603,6 @@
 		CA48465F1CDFA47D005030EF /* mute.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mute.caf; sourceTree = "<group>"; };
 		CA570B631C3B8AA300918E3A /* MHWDirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHWDirectoryWatcher.h; sourceTree = "<group>"; };
 		CA570B641C3B8AA300918E3A /* MHWDirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHWDirectoryWatcher.m; sourceTree = "<group>"; };
-		CA6614AF1BFF7D7800AAD7D4 /* libFlurry_7.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_7.0.0.a; path = ../ShoutOut/ShoutOut/Flurry/libFlurry_7.0.0.a; sourceTree = "<group>"; };
 		CA68821B1CDC118500B0ED05 /* iNDSBuildStoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iNDSBuildStoreTableViewController.h; sourceTree = "<group>"; };
 		CA68821C1CDC118500B0ED05 /* iNDSBuildStoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iNDSBuildStoreTableViewController.m; sourceTree = "<group>"; };
 		CA6882221CDC19A800B0ED05 /* WCBuildStoreAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WCBuildStoreAuthenticateViewController.h; path = WCBuildStoreClient/WCBuildStoreAuthenticateViewController.h; sourceTree = "<group>"; };
@@ -737,7 +735,6 @@
 		D32C39D4178E73B500E6809E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D32C39D6178E73C200E6809E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D32C39D8178E748000E6809E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D32C39DA178E749C00E6809E /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		D3B8BB911794ACCE0061D1D8 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxSDK.framework; path = iNDS/dropbox/DropboxSDK.framework; sourceTree = "<group>"; };
 		D3B8BB931794ACEF0061D1D8 /* ZAActivityBar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZAActivityBar.bundle; path = iNDS/ZAActivityBar/ZAActivityBar.bundle; sourceTree = SOURCE_ROOT; };
 		D3B8BB941794ACEF0061D1D8 /* ZAActivityBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZAActivityBar.h; path = iNDS/ZAActivityBar/ZAActivityBar.h; sourceTree = SOURCE_ROOT; };
@@ -753,6 +750,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9E80D6F200F0DF100E0E339 /* libz.tbd in Frameworks */,
 				CA3224E31CD41D7C00C5BEA7 /* Security.framework in Frameworks */,
 				CA6E609C1CB0574B000B269D /* MobileCoreServices.framework in Frameworks */,
 				CA8EA1421C37C42E0082A3F8 /* MediaPlayer.framework in Frameworks */,
@@ -761,13 +759,11 @@
 				CA908C0F1C235AA000B2A864 /* Accelerate.framework in Frameworks */,
 				CA908C0D1C235A9B00B2A864 /* AVFoundation.framework in Frameworks */,
 				9C4DD2861891E5390075B66C /* GameController.framework in Frameworks */,
-				D32C39DB178E749C00E6809E /* libc++.dylib in Frameworks */,
 				A9165CBF20084BCE0049A4CA /* UnrarKit.framework in Frameworks */,
 				D32C39D9178E748000E6809E /* QuartzCore.framework in Frameworks */,
 				D32C39D7178E73C200E6809E /* SystemConfiguration.framework in Frameworks */,
 				D32C39D3178E73A600E6809E /* CFNetwork.framework in Frameworks */,
 				4C3F2AED178E017600AE10B8 /* Twitter.framework in Frameworks */,
-				BFAE6F9B17674D93000911CF /* libz.dylib in Frameworks */,
 				BFAE6F931767490A000911CF /* OpenGLES.framework in Frameworks */,
 				A9165CC020084C750049A4CA /* UnrarKit.framework in Frameworks */,
 				BFAE6F9117674902000911CF /* GLKit.framework in Frameworks */,
@@ -997,23 +993,21 @@
 		BFCFE0F11764FBD3000A70CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9E80D6E200F0DF000E0E339 /* libz.tbd */,
 				A9165CBE20084BCE0049A4CA /* UnrarKit.framework */,
 				CA6E609B1CB0574B000B269D /* MobileCoreServices.framework */,
 				CA8EA1411C37C42E0082A3F8 /* MediaPlayer.framework */,
 				CABE38971C30FA9800BE8857 /* libsqlite3.tbd */,
 				CA908C0E1C235AA000B2A864 /* Accelerate.framework */,
 				CA908C0C1C235A9B00B2A864 /* AVFoundation.framework */,
-				CA6614AF1BFF7D7800AAD7D4 /* libFlurry_7.0.0.a */,
 				9C4DD2851891E5390075B66C /* GameController.framework */,
 				D3B8BB911794ACCE0061D1D8 /* DropboxSDK.framework */,
-				D32C39DA178E749C00E6809E /* libc++.dylib */,
 				D32C39D8178E748000E6809E /* QuartzCore.framework */,
 				D32C39D6178E73C200E6809E /* SystemConfiguration.framework */,
 				D32C39D4178E73B500E6809E /* Security.framework */,
 				D32C39D2178E73A600E6809E /* CFNetwork.framework */,
 				4C3F2AEC178E017600AE10B8 /* Twitter.framework */,
 				BF9D514717865D5100B5864B /* AudioToolbox.framework */,
-				BFAE6F9A17674D93000911CF /* libz.dylib */,
 				BFAE6F921767490A000911CF /* OpenGLES.framework */,
 				BFAE6F9017674902000911CF /* GLKit.framework */,
 				BFCFE0F21764FBD3000A70CF /* UIKit.framework */,
